@@ -24,6 +24,23 @@ class Home extends React.Component {
         >
           {t("change-locale")}
         </button>
+        {i18n.options.allLanguages
+          .filter(item => item != i18n.language)
+          .map((item, i) => {
+            // if (item != i18n.language) {
+            return (
+              <div>
+                <button
+                  key={i}
+                  type="button"
+                  onClick={() => i18n.changeLanguage(item)}
+                >
+                  {item}
+                </button>
+              </div>
+            );
+            // }
+          })}
         <div className="hero">
           <h1 className="title">{t("welcome")}</h1>
           <p className="description">
