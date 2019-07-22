@@ -1,15 +1,8 @@
-import NextI18Next from 'next-i18next'
+const NextI18Next = require("next-i18next").default;
 
-const NextI18NextInstance = new NextI18Next({
-  lng:'ar',
-  defaultLanguage: 'ar',
-  otherLanguages: ['en'],
-  defaultNS: 'common',
-  localeSubpaths: 'all',
-  debug: true
-})
-
-export const {
-    appWithTranslation,
-    withTranslation,
-  } = NextI18NextInstance
+module.exports = new NextI18Next({
+  defaultLanguage: "ar",
+  otherLanguages: ["en"],
+  localeSubpaths: "all",
+  // debug: true
+});
