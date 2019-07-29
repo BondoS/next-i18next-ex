@@ -29,9 +29,8 @@ class Home extends React.Component {
           .map((item, i) => {
             // if (item != i18n.language) {
             return (
-              <div>
+              <div key={i}>
                 <button
-                  key={i}
                   type="button"
                   onClick={() => i18n.changeLanguage(item)}
                 >
