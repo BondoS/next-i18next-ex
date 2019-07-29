@@ -1,0 +1,37 @@
+// _document is only rendered on the server side and not on the client side
+// Event handlers like onClick can't be added to this file
+// https://github.com/zeit/next.js/#custom-document
+
+// ./pages/_document.js
+import { lngFromReq } from "next-i18next/dist/commonjs/utils";
+import Document, { Html, Head, Main, NextScript } from "next/document";
+
+class MyDocument extends Document {
+  static async getInitialProps(ctx) {
+    const initialProps = await Document.getInitialProps(ctx);
+    let lng = await lngFromReq(ctx.req);
+    lng = lng.split("-")[1]
+      ? lng.split("-")[0] + "-" + lng.split("-")[1].toUpperCase()
+      : lng;
+    const additionalProps = await {
+      isRTL: /ar/.test(lng),
+      lng
+    };
+    return { ...initialProps, ...additionalProps };
+  }
+  render() {
+    const { isRTL, lng } = this.props;
+    console.log("_document.js render props: ", this.props);
+    return (
+      <Html lang={lng} dir={isRTL ? "rtl" : "ltr"}>
+        <Head />
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    );
+  }
+}
+
+export default MyDocument;
