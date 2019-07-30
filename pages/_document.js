@@ -5,6 +5,7 @@
 // ./pages/_document.js
 import { lngFromReq } from "next-i18next/dist/commonjs/utils";
 import Document, { Html, Head, Main, NextScript } from "next/document";
+import { i18n } from "../i18n";
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -21,7 +22,6 @@ class MyDocument extends Document {
   }
   render() {
     const { isRTL, lng } = this.props;
-    console.log("_document.js render props: ", this.props);
     return (
       <Html lang={lng} dir={isRTL ? "rtl" : "ltr"}>
         <Head />
