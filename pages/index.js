@@ -4,43 +4,52 @@ import Nav from "../components/nav";
 import { i18n, withTranslation, Link } from "../i18n";
 
 class Home extends React.Component {
-  static async getInitialProps() {
+  constructor(props) {
+    super(props);
+    this.state = {
+      otherLangs: this.props.otherLangs,
+      dir: /ar/.test(i18n.language) ? "rtl" : "ltr"
+    };
+  }
+  static async getInitialProps({ req }) {
     return {
-      namespacesRequired: ["common", "footer"]
+      namespacesRequired: ["common"]
     };
   }
 
+  changeLangHandler = lang => {
+    i18n.changeLanguage(lang);
+    let dir = /ar/.test(lang) ? "rtl" : "ltr";
+    let otherLangs = i18n.options.allLanguages.filter(item => item != lang);
+    lang = lang.split("-")[1]
+      ? lang.split("-")[0] + "-" + lang.split("-")[1].toUpperCase()
+      : lang;
+    document.dir = dir;
+    document.documentElement.lang = lang;
+    this.setState(state => {
+      return { ...state, dir, otherLangs };
+    });
+  };
+
   render() {
     const { t } = this.props;
+    const { otherLangs } = this.state;
     return (
       <div>
         <Head title="Home" />
         <Nav />
-        <button
-          type="button"
-          onClick={() =>
-            i18n.changeLanguage(i18n.language === "en" ? "ar" : "en")
-          }
-        >
-          {t("change-locale")}
-        </button>
-        {i18n.options.allLanguages
-          .filter(item => item != i18n.language)
-          .map((item, i) => {
-            // if (item != i18n.language) {
-            return (
-              <div>
-                <button
-                  key={i}
-                  type="button"
-                  onClick={() => i18n.changeLanguage(item)}
-                >
-                  {item}
-                </button>
-              </div>
-            );
-            // }
-          })}
+        {otherLangs.map((item, i) => {
+          return (
+            <div key={i}>
+              <button
+                type="button"
+                onClick={() => this.changeLangHandler(item)}
+              >
+                {item}
+              </button>
+            </div>
+          );
+        })}
         <div className="hero">
           <h1 className="title">{t("welcome")}</h1>
           <p className="description">

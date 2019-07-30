@@ -15,7 +15,7 @@ const handle = app.getRequestHandler();
   server.use(nextI18NextMiddleware(nextI18next));
 
   server.get("*", (req, res) => {
-      console.log('-----server.js REQ',req, '-----server.js RES', res)
+      // console.log('-----server.js REQ',req, '-----server.js RES', res)
     handle(req, res);
   });
 

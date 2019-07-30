@@ -1,4 +1,10 @@
 {
-    "welcome": "A simple example EN",
-    "change-locale": "عربي"
+  "welcome": "A simple example EN",
+  "change-locale": "عربي",
+  "ar": "ar",
+  "en": "en",
+  "ar-eg": "ar-eg",
+  "ar-kw": "ar-kw",
+  "en-eg": "en-eg",
+  "en-kw": "en-kw"
 }

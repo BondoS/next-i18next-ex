@@ -1,4 +1,10 @@
 {
-    "welcome": "لوريم ايبسوم دولار سيت أميت كويت",
-    "change-locale": "English"
+  "welcome": "لوريم ايبسوم دولار سيت أميت كويت",
+  "change-locale": "English",
+  "ar": "ar",
+  "en": "en",
+  "ar-eg": "ar-eg",
+  "ar-kw": "ar-kw",
+  "en-eg": "en-eg",
+  "en-kw": "en-kw"
 }
