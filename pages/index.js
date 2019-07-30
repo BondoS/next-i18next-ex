@@ -4,42 +4,27 @@ import Nav from "../components/nav";
 import { i18n, withTranslation, Link } from "../i18n";
 
 class Home extends React.Component {
-  static async getInitialProps() {
+  static async getInitialProps({ req }) {
     return {
-      namespacesRequired: ["common", "footer"]
+      namespacesRequired: ["common"]
     };
   }
 
   render() {
-    const { t } = this.props;
+    const { t, otherLangs } = this.props;
     return (
       <div>
         <Head title="Home" />
         <Nav />
-        <button
-          type="button"
-          onClick={() =>
-            i18n.changeLanguage(i18n.language === "en" ? "ar" : "en")
-          }
-        >
-          {t("change-locale")}
-        </button>
-        {i18n.options.allLanguages
-          .filter(item => item != i18n.language)
-          .map((item, i) => {
-            // if (item != i18n.language) {
-            return (
-              <div key={i}>
-                <button
-                  type="button"
-                  onClick={() => i18n.changeLanguage(item)}
-                >
-                  {item}
-                </button>
-              </div>
-            );
-            // }
-          })}
+        {otherLangs.map((item, i) => {
+          return (
+            <div key={i}>
+              <button type="button" onClick={() => i18n.changeLanguage(item)}>
+                {item}
+              </button>
+            </div>
+          );
+        })}
         <div className="hero">
           <h1 className="title">{t("welcome")}</h1>
           <p className="description">
