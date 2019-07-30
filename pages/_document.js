@@ -10,7 +10,7 @@ import { i18n } from "../i18n";
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const initialProps = await Document.getInitialProps(ctx);
-    let lng = await lngFromReq(ctx.req);
+    let lng = (await ctx.req) === null ? i18n.language : lngFromReq(ctx.req);
     lng = lng.split("-")[1]
       ? lng.split("-")[0] + "-" + lng.split("-")[1].toUpperCase()
       : lng;

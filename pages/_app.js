@@ -10,7 +10,7 @@ class MyApp extends App {
 
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx);
-      lng = await lngFromReq(ctx.req);
+      lng = (await ctx.req) === null ? i18n.language : lngFromReq(ctx.req);
       otherLangs = await i18n.options.allLanguages.filter(item => item != lng);
     }
 
