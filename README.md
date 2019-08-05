@@ -7,11 +7,15 @@ supports
 
 ### 3- rtl and ltr support
 
-Those languages has been implemented for the sake of testing but you can edit, add or delete whatever you need
-####- ar-eg "Arabic Egypt" > RTL
-####- en-eg "English Egypt" > LTR
-####- ar-kw "Arabic Kuwait" > RTL
-####- en-kw "English Kuwait" > LTR
+Those languages have been implemented for the sake of testing but you can edit, add or delete whatever you need
+
+#### - ar-eg "Arabic Egypt" > RTL
+
+#### - en-eg "English Egypt" > LTR
+
+#### - ar-kw "Arabic Kuwait" > RTL
+
+#### - en-kw "English Kuwait" > LTR
 
 just run
 
