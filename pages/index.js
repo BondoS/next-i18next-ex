@@ -132,8 +132,4 @@ class Home extends React.Component {
   }
 }
 
-Home.getInitialProps = async () => ({
-  namespacesRequired: ["common"]
-});
-
 export default withTranslation("common")(Home);
