@@ -6,7 +6,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "next": "^9.0.2",
     "next-i18next": "^0.47.0",
     "react": "^16.8.6",
